@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ReactCH — Home</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="nav">
+    <a href="index.html" class="active">ReactCH Tool</a>
+    <a href="ai-code.html">AI Code</a>
+    <a href="ai-tugas.html">AI Tugas</a>
+  </header>
+
+  <div class="wrap">
+    <h1>ReactCH — Reaction Sender</h1>
+    <p class="lead">Kirim reaction otomatis ke link post WhatsApp Channel.</p>
+
+    <section class="card">
+      <form id="form">
+        <label>Command</label>
+        <select id="cmd" required>
+          <option value="rch">rch</option>
+          <option value="frch">frch</option>
+          <option value="fakereactch">fakereactch</option>
+          <option value="fakerch">fakerch</option>
+          <option value="reactch" selected>reactch</option>
+        </select>
+
+        <label>Link Post</label>
+        <input id="link" type="text" placeholder="https://whatsapp.com/channel/xxx/123" required />
+
+        <label>Emoji</label>
+        <input id="emoji" type="text" placeholder="😂 😱" required />
+
+        <label>API Keys (satu per baris)</label>
+        <textarea id="apikeys" placeholder="masukkan api key..." required></textarea>
+
+        <div style="display:flex;gap:10px;margin-top:12px">
+          <button class="btn" type="submit">Kirim React</button>
+          <button id="clear" type="button" class="btn ghost">Bersihkan Log</button>
+        </

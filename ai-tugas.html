@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AI Tugas</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="nav">
+    <a href="index.html">ReactCH Tool</a>
+    <a href="ai-code.html">AI Code</a>
+    <a href="ai-tugas.html" class="active">AI Tugas</a>
+  </header>
+
+  <div class="wrap">
+    <h1>AI Tugas Sekolah & Kuliah</h1>
+    <p class="lead">Buat ringkasan, jawaban, atau esai singkat. (Mock tanpa backend)</p>
+
+    <section class="card">
+      <label>Tingkat</label>
+      <select id="level">
+        <option value="sd">SD</option>
+        <option value="smp">SMP</option>
+        <option value="sma">SMA</option>
+        <option value="kuliah" selected>Kuliah</option>
+      </select>
+
+      <label>Mata Pelajaran / Mata Kuliah</label>
+      <input id="subject" type="text" placeholder="Contoh: Ekonomi, Algoritma..." />
+
+      <label>Deskripsi Tugas / Soal</label>
+      <textarea id="task" placeholder="Contoh: Jelaskan apa itu ekonomi makro dalam 200 kata..."></textarea>
+
+      <div style="display:flex;gap:10px;margin-top:12px">
+        <button class="btn" id="solve">Buat Jawaban</button>
+        <button class="btn ghost" id="copy-task" type="button">Copy Jawaban</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h3>Hasil Jawaban</h3>
+      <pre id="taskOut" class="log"></pre>
+      <div class="muted" style="margin-top:8px">Catatan: Ini mock. Untuk hasil lebih baik hubungkan ke backend AI.</div>
+    </section>
+  </div>
+
+  <script>
+    document.getElementById('solve').addEventListener('click', () => {
+      const level = document.getElementById('level').value;
+      const subject = document.getElementById('subject').value.trim();
+      const task = document.getElementById('task').value.trim();
+      const out = document.getElementById('taskOut');
+      if (!task) { out.innerText = 'Masukkan deskripsi tugas terlebih dahulu'; return; }
+      out.innerText = `Hasil Mock (${level.toUpperCase()} - ${subject || 'Umum'})\n\nSoal: ${task}\n\nJawaban (contoh):\n- Ringkasan singkat: ...\n- Penjelasan: ...\n\nCatatan: Hubungkan ke API AI untuk jawaban lengkap.`;
+    });
+
+    document.getElementById('copy-task').addEventListener('click', () => {
+      const t = document.getElementById('taskOut').innerText;
+      if (!t) return alert('Tidak ada jawaban untuk disalin');
+      navigator.clipboard.writeText(t).then(()=>alert('Jawaban disalin ke clipboard'));
+    });
+  </script>
+</body>
+</html>

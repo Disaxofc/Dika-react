@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AI Code Generator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="nav">
+    <a href="index.html">ReactCH Tool</a>
+    <a href="ai-code.html" class="active">AI Code</a>
+    <a href="ai-tugas.html">AI Tugas</a>
+  </header>
+
+  <div class="wrap">
+    <h1>AI Code Generator</h1>
+    <p class="lead">Generate snippet, refactor, atau minta penjelasan kode.</p>
+
+    <section class="card">
+      <label>Prompt</label>
+      <textarea id="prompt" placeholder="Contoh: Buatkan kalkulator JS sederhana"></textarea>
+
+      <label>Bahasa / Framework (opsional)</label>
+      <input id="lang" type="text" placeholder="JavaScript, Python, React..." />
+
+      <div style="display:flex;gap:10px;margin-top:12px">
+        <button class="btn" id="gen-code">Generate Code</button>
+        <button class="btn ghost" id="copy-code" type="button">Copy Result</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h3>Hasil</h3>
+      <pre id="output" class="log"></pre>
+    </section>
+  </div>
+
+  <script>
+    // Simple client-side mock. Replace with backend call for real AI.
+    document.getElementById('gen-code').addEventListener('click', () => {
+      const p = document.getElementById('prompt').value.trim();
+      const lang = document.getElementById('lang').value.trim();
+      const out = document.getElementById('output');
+      if (!p) { out.innerText = 'Masukkan prompt terlebih dahulu'; return; }
+      // If you have a backend at /api/ai/generate-code, call it instead:
+      // fetch('/api/ai/generate-code', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({prompt:p, lang}) })
+      //  .then(r=>r.json()).then(j=>out.innerText = j.code || JSON.stringify(j));
+      out.innerText = `// Hasil Mock AI\n// Permintaan: ${p}\n// Bahasa: ${lang || 'umum'}\n\nconsole.log('Generated code placeholder');`;
+    });
+
+    document.getElementById('copy-code').addEventListener('click', () => {
+      const t = document.getElementById('output').innerText;
+      if (!t) return alert('Tidak ada hasil untuk disalin');
+      navigator.clipboard.writeText(t).then(()=>alert('Disalin ke clipboard'));
+    });
+  </script>
+</body>
+</html>
